@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post an Opportunity - Unstop</title>
+  
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+</head>
+<style>
+  
+:root {
+    --primary-blue: #2A81E0;
+    --light-blue-bg: #EAF3FE;
+    --border-color: #DEE2E6;
+    --text-dark: #212529;
+    --text-light: #6C757D;
+    --page-bg: #F8F9FA;
+    --white: #FFFFFF;
+    --font-family: "Inter", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--page-bg);
+    color: var(--text-dark);
+    font-size: 14px;
+    line-height: 1.5;
+    
+}
+
+.page-container {
+    display: flex;
+    max-width: 1400px;    
+    min-height: 100vh;
+    padding-left: 25%;
+    background-color: var(--white);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.sidebar {
+    flex: 0 0 300px;
+    padding: 2.5rem;
+    padding-left: 4.5rem;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 3rem;
+   
+}
+
+.stepper {
+    position: relative;
+    padding-left: 20px;
+}
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+.step:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 14px;
+    top: 32px;
+    bottom: -2.5rem; 
+    width: 2px;
+    border-left: 2px dashed var(--border-color);
+    z-index: 1;
+}
+
+.step-number {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-weight: 600;
+    margin-right: 1rem;
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    color: var(--text-light);
+    position: relative;
+    z-index: 2;
+}
+
+.step-label span {
+    display: block;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.step.active .step-number {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border-color: var(--primary-blue);
+}
+
+.step.active .step-label {
+    color: var(--primary-blue);
+}
+
+.step.active .step-label span {
+    color: var(--primary-blue);
+}
+
+.support-box {
+    margin-top: 2rem;
+    background-color: var(--page-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    font-size: 13px;
+}
+.support-box strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+.support-box p {
+    margin-bottom: 0.5rem;
+}
+.support-box a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    overflow-y: auto;
+}
+
+.form-section {
+    margin-bottom: 2.5rem;
+}
+.form-section h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.field-hint {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 0.3rem;
+}
+
+input[type="text"],
+input[type="url"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #BDBDBD;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: var(--font-family);
+    resize: vertical;
+}
+
+input[type="text"]:focus,
+input[type="url"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+   
+}
+
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236C757D' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+}
+
+.form-group-inline {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.current-location-link {
+    display: block;
+    text-align: right;
+    font-size: 12px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+
+input[type="file"]#logo-upload {
+    display: none;
+}
+.logo-upload-label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+.logo-placeholder {
+    width: 100px;
+    height: 100px;
+    border-radius: 1rem;
+    background-color: #E0E0E0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="%236C757D" viewBox="0 0 16 16"><path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/><path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.logo-upload-label span {
+    color: var(--primary-blue);
+    font-weight: 500;
+}
+
+.rich-text-editor .toolbar {
+    padding: 8px 12px;
+    background: var(--page-bg);
+    border: 1px solid #BDBDBD;
+    border-bottom: none;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    display: flex;
+    gap: 8px;
+    color: var(--text-light);
+}
+.rich-text-editor .toolbar span {
+    font-family: monospace;
+    font-weight: bold;
+    cursor: pointer;
+}
+.rich-text-editor textarea {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.info-box {
+    background-color: #FEFCE8;
+    border: 1px solid #FDE68A;
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 13px;
+    color: #713F12;
+    margin: 1.5rem 0;
+}
+.info-box ul, .info-box ol {
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+.info-box strong {
+    color: #422006;
+}
+
+.toggle-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.toggle-group input[type="radio"],
+.toggle-group input[type="checkbox"] {
+    display: none;
+}
+.toggle-group label {
+    padding: 8px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-bottom: 0;
+    transition: all 0.2s ease;
+}
+.toggle-group.criteria-group label {
+    border-radius: 6px;
+}
+
+.toggle-group input[type="radio"]:checked + label,
+.toggle-group input[type="checkbox"]:checked + label {
+    background-color: var(--light-blue-bg);
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+}
+
+.setting-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+.setting-card div span {
+    display: block;
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.btn-change {
+    background: none;
+    border: none;
+    color: var(--primary-blue);
+    font-weight: 600;
+    cursor: pointer;
+}
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: var(--white);
+}
+.btn-primary:hover {
+    background-color: #256bb9;
+}
+.btn-secondary {
+    background-color: var(--white);
+    color: var(--primary-blue);
+    border: 1px solid var(--primary-blue);
+}
+.btn-secondary:hover {
+    background-color: #f8faff;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--white);
+    position: sticky;
+    bottom: 0;
+    margin: 0 -4rem -2.5rem; 
+    padding: 1.5rem 4rem;
+}
+.form-group button{
+    margin-top: 12px;
+    padding: 5px 15px;
+    background-color: #2A81E0;
+    color: white;
+    border-radius: 20px;
+    font-size: 14px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+.skillscon{
+    margin-top: 15px;
+}
+.skillscon span{
+    padding: 5px 10px;
+    border: 0.5px solid rgba(0, 0, 0, 0.289);
+    border-radius: 20px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+.main-content h2{
+    font-size: 25px;
+}
+.main-content p{
+    color: grey;
+}
+.main-content div{
+    margin-top: 13px;
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    gap: 10px;
+}
+.main-content button{
+    padding: 10px 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.main-content .button1{
+    background-color: #447fd9;
+    color: white;
+    border-radius: 7px;
+
+}
+.main-content .button2{
+    background-color: #f0f0f0;
+    color: black;
+    border-radius: 7px;
+
+}
+</style>
+<script>
+
+</script>
+
+<body>
+    <div class="page-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h3>EventUs</h3>
+            </div>
+            
+            <nav class="stepper">
+                <div class="step active" >
+                    <div class="step-number" style="background-color: #e3f6ec; color: #225230; border: none;"><i class="fa-solid fa-check"></i></div>
+                    <div class="step-label" style="color: gray;">
+                        Step 1
+                        <span style="color: gray">Opportunity details</span>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number" style="background-color: #e3f6ec; color: #225230; border: none;"><i class="fa-solid fa-check"></i></div>
+                    <div class="step-label" style="color: #225230;">
+                        Step 2
+                        <span style="color: #225230;">Completed</span>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="support-box">
+                <div class="support-icon"></div>
+                <strong>Support</strong>
+                <p>Facing any issues or need any help?</p>
+                <p>Reach us at <strong>support@EventUs.com</strong></p>
+                <a href="#">Get in touch with us here</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <h2>You're all set!</h2>
+            <p>Your hackathon has been created and is now live.</p>
+
+            <div>
+                <button class="button1">Go to Dashboard</button>
+                <button class="button2">View Hackathon</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

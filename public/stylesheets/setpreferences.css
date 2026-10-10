@@ -1,0 +1,241 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: #f3f5f8;
+}
+
+.layout {
+    display: flex;
+}
+
+.sidebar {
+    width: 270px;
+    background: #1f2d3d;
+    color: #fff;
+    height: 100vh;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+.sidebar ul:last-of-type {
+    margin-top: auto; 
+}
+.sidebar .logo {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.sidebar ul li {
+    margin: 16px 0;
+    list-style: none;
+    cursor: pointer;
+    padding: 8px;
+    padding-left: 16px;
+    border-radius: 6px;
+}
+
+.sidebar ul li.active,
+.sidebar ul li:hover {
+    background: #324a5f;
+}
+
+.main {
+    flex: 1;
+    padding: 20px 40px;
+    margin-left: 260px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topbar .right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile {
+    width: 34px;
+    height: 34px;
+    background: #4c6ef5;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.page-title {
+    margin: 20px 0 10px;
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+select, .clear-btn {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background: white;
+}
+
+.clear-btn {
+    background: #ececec;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.event-card {
+    width: 290px;
+    background: white;
+    border-radius: 15px;
+    padding-bottom: 15px;
+    border: 0.5px solid rgba(146, 146, 146, 0.266);
+    overflow: hidden;
+    position: relative;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+}
+.event-card:hover{
+    border: 0.5px solid black;
+    transition: 0.6s;
+}
+
+.event-banner {
+    background-image: url('	https://d8it4huxumps7.cloudfront.net/uploads/images/6772874a2fda2_bg1.png?d=504x160');
+    height: 110px;
+    background-position: center;
+  background-size: auto;  
+  background-repeat: no-repeat;
+    position: relative;
+    border-radius: 15px 15px 0 0;
+}
+
+.event-tags {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.tag {
+    background: #f4f4f4;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-right: 5px;
+    font-size: 12px;
+}
+
+.event-logo {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -30px;
+    right: 15px;
+    border: 4px solid white;
+    background: white;
+    object-fit: cover;
+}
+
+.event-content {
+    padding: 40px 15px 10px;
+    position: relative;
+}
+
+.event-title {
+    font-size: 20px;
+    margin: 0;
+    font-weight: 600;
+}
+
+.event-org {
+    font-size: 14px;
+    color: #555;
+    margin-top: 3px;
+    margin-bottom: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.event-stats {
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+.stat i {
+    margin-right: 4px;
+}
+
+.event-arrow {
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    font-size: 18px;
+    color: #888;
+    cursor: pointer;
+}
+
+.cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.skillbox{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.skills{
+    padding: 10px 10px;
+    border: 0.5px solid rgba(103, 99, 99, 0.542);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.selected{
+    border: 0.5px solid #2A81E0;
+    background-color: #88a7c961;
+
+}
+button{
+    margin-top: 15px;
+    border: none;
+    outline: none;
+    padding: 10px 25px;
+    cursor: pointer;
+    background-color: rgb(219, 91, 91);
+    color: white;
+    border-radius: 5px;
+}

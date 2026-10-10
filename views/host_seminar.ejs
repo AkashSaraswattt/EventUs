@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post an Opportunity - Unstop</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+</head>
+<style>
+    
+:root {
+    --primary-blue: #2A81E0;
+    --light-blue-bg: #EAF3FE;
+    --border-color: #DEE2E6;
+    --text-dark: #212529;
+    --text-light: #6C757D;
+    --page-bg: #F8F9FA;
+    --white: #FFFFFF;
+    --font-family: "Inter", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--page-bg);
+    color: var(--text-dark);
+    font-size: 14px;
+    line-height: 1.5;
+    
+}
+
+
+.page-container {
+    display: flex;
+    max-width: 1400px;   
+    min-height: 100vh;
+    
+    padding-left: 25%;
+    background-color: var(--white);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.sidebar {
+    flex: 0 0 300px;
+    padding: 2.5rem;
+    padding-left: 4.5rem;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 3rem;
+    /* margin-left: 3rem; */
+    /* padding-left: 10px; */
+}
+
+.stepper {
+    position: relative;
+    padding-left: 20px;
+}
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+.step:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 14px;
+    top: 32px;
+    bottom: -2.5rem; 
+    width: 2px;
+    border-left: 2px dashed var(--border-color);
+    z-index: 1;
+}
+
+.step-number {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-weight: 600;
+    margin-right: 1rem;
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    color: var(--text-light);
+    position: relative;
+    z-index: 2;
+}
+
+.step-label span {
+    display: block;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.step.active .step-number {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border-color: var(--primary-blue);
+}
+
+.step.active .step-label {
+    color: var(--primary-blue);
+}
+
+.step.active .step-label span {
+    color: var(--primary-blue);
+}
+
+.support-box {
+    margin-top: 2rem;
+    background-color: var(--page-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    font-size: 13px;
+}
+.support-box strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+.support-box p {
+    margin-bottom: 0.5rem;
+}
+.support-box a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    overflow-y: auto;
+}
+
+.form-section {
+    margin-bottom: 2.5rem;
+}
+.form-section h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.field-hint {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 0.3rem;
+}
+
+input[type="text"],
+input[type="url"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #BDBDBD;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: var(--font-family);
+    resize: vertical;
+}
+
+input[type="text"]:focus,
+input[type="url"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    /* border-color: var(--primary-blue); */
+    /* box-shadow: 0 0 0 3px var(--light-blue-bg); */
+}
+
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236C757D' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+}
+
+.form-group-inline {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.current-location-link {
+    display: block;
+    text-align: right;
+    font-size: 12px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+
+input[type="file"]#logo-upload {
+    display: none;
+}
+.logo-upload-label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+.logo-placeholder {
+    width: 100px;
+    height: 100px;
+    border-radius: 1rem;
+    background-color: #E0E0E0;
+
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="%236C757D" viewBox="0 0 16 16"><path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/><path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.logo-upload-label span {
+    color: var(--primary-blue);
+    font-weight: 500;
+}
+
+.rich-text-editor .toolbar {
+    padding: 8px 12px;
+    background: var(--page-bg);
+    border: 1px solid #BDBDBD;
+    border-bottom: none;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    display: flex;
+    gap: 8px;
+    color: var(--text-light);
+}
+.rich-text-editor .toolbar span {
+    font-family: monospace;
+    font-weight: bold;
+    cursor: pointer;
+}
+.rich-text-editor textarea {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.info-box {
+    background-color: #FEFCE8;
+    border: 1px solid #FDE68A;
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 13px;
+    color: #713F12;
+    margin: 1.5rem 0;
+}
+.info-box ul, .info-box ol {
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+.info-box strong {
+    color: #422006;
+}
+
+.toggle-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.toggle-group input[type="radio"],
+.toggle-group input[type="checkbox"] {
+    display: none;
+}
+.toggle-group label {
+    padding: 8px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-bottom: 0;
+    transition: all 0.2s ease;
+}
+.toggle-group.criteria-group label {
+    border-radius: 6px;
+}
+
+.toggle-group input[type="radio"]:checked + label,
+.toggle-group input[type="checkbox"]:checked + label {
+    background-color: var(--light-blue-bg);
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+}
+
+.setting-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+.setting-card div span {
+    display: block;
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.btn-change {
+    background: none;
+    border: none;
+    color: var(--primary-blue);
+    font-weight: 600;
+    cursor: pointer;
+}
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: var(--white);
+}
+.btn-primary:hover {
+    background-color: #256bb9;
+}
+.btn-secondary {
+    background-color: var(--white);
+    color: var(--primary-blue);
+    border: 1px solid var(--primary-blue);
+}
+.btn-secondary:hover {
+    background-color: #f8faff;
+}
+
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--white);
+    position: sticky;
+    bottom: 0;
+    margin: 0 -4rem -2.5rem; 
+    padding: 1.5rem 4rem;
+}
+.form-group button{
+    margin-top: 12px;
+    padding: 5px 15px;
+    background-color: #2A81E0;
+    color: white;
+    border-radius: 20px;
+    font-size: 14px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+.skillscon{
+    margin-top: 15px;
+}
+.skillscon span{
+    padding: 5px 10px;
+    border: 0.5px solid rgba(0, 0, 0, 0.289);
+    border-radius: 20px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+.skillbox{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.skills{
+    padding: 10px 10px;
+    border: 0.5px solid rgba(103, 99, 99, 0.542);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.selected{
+    border: 0.5px solid #2A81E0;
+    background-color: #88a7c961;
+
+}
+
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    let skillsArr = [];
+    const skillElements = document.querySelectorAll(".skills");
+
+    skillElements.forEach(skill => {
+        skill.addEventListener("click", () => {
+            
+            skill.classList.toggle("selected");
+            const value = skill.textContent.trim();
+
+            if (skill.classList.contains("selected")) {
+             
+                if (!skillsArr.includes(value)) {
+                    skillsArr.push(value);
+                }
+            } else {
+             
+                skillsArr = skillsArr.filter(s => s !== value);
+            }
+
+            console.log(skillsArr);
+        });
+    });
+
+    
+
+    
+    const offlineSection = document.getElementById("offline-section");
+    const modeToggles = document.querySelectorAll('input[name="mode"]');
+
+    function handleModeChange() {
+        const selected = document.querySelector('input[name="mode"]:checked').value;
+        offlineSection.style.display = selected === "offline" ? "block" : "none";
+    }
+    modeToggles.forEach(t => t.addEventListener("change", handleModeChange));
+    handleModeChange();
+
+
+   
+    const teamSizeSection = document.getElementById("team-size-section");
+    const participationToggles = document.querySelectorAll('input[name="participation-type"]');
+
+    function handleParticipationChange() {
+        const selected = document.querySelector('input[name="participation-type"]:checked').value;
+        teamSizeSection.style.display = selected === "team" ? "grid" : "none";
+    }
+    participationToggles.forEach(t => t.addEventListener("change", handleParticipationChange));
+    handleParticipationChange();
+
+
+ 
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault(); 
+
+        const formData = new FormData(form); 
+
+     
+        formData.delete("orgName");
+        formData.delete("seminarTitle");
+        formData.delete("url");
+        formData.delete("opp-description");
+        formData.delete("venue");
+        formData.delete("location");
+        formData.delete("mode");
+        formData.delete("participation-type");
+        formData.delete("skills");
+        formData.delete('registrationDate')
+        formData.delete('commenceDate')
+        formData.delete('organiserName')
+        formData.delete('organiserDesignation')
+        formData.delete('organiserEmail')
+        formData.delete('organiserNumber')
+        formData.append("skills", JSON.stringify(skillsArr));
+
+        formData.append("seminarTitle", document.getElementById("opp-title").value);
+        formData.append("orgName", document.getElementById("org-name").value);
+        formData.append("url", document.getElementById("company-url").value);
+        formData.append("description", document.getElementById("opp-description").value);
+        formData.append('registrationDate',document.getElementById('regDate').value)
+        formData.append('commenceDate',document.getElementById('comDate').value)
+        formData.append('organiserName',document.getElementById('organName').value)
+        formData.append('organiserDesignation',document.getElementById('organDes').value)
+        formData.append('organiserEmail',document.getElementById('organEma').value)
+        formData.append('organiserNumber',document.getElementById('organNum').value)
+        formData.append(
+            "participationType",
+            document.querySelector('input[name="participation-type"]:checked').value
+        );
+
+        formData.append(
+            "mode",
+            document.querySelector('input[name="mode"]:checked').value
+        );
+
+        formData.append("venue", document.getElementById("venue").value);
+        formData.append("location", document.getElementById("location").value);
+
+        formData.append("minSize", document.getElementById("team-min").value);
+        formData.append("maxSize", document.getElementById("team-max").value);
+
+        
+        fetch("/host/seminar", {
+    method: "POST",
+    body: formData,
+})
+.then(res => res.json()) 
+.then(data => {
+    console.log(data);
+    alert("seminar Published!");
+
+    window.location.href = "/host/seminar/completed";
+})
+.catch(err => console.error("Error:", err));
+    });
+
+});
+</script>
+
+<body>
+    <!-- <h1 style="text-align: center;">Post an Opportunity</h1> -->
+    <div class="page-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h3>EventUs</h3>
+                <p>Your Feed. Your Future</p>
+            </div>
+            
+            <nav class="stepper">
+                <div class="step active">
+                    <div class="step-number">1</div>
+                    <div class="step-label">
+                        Step 1
+                        <span>Opportunity details</span>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-label" style="color: grey;">
+                        Step 2
+                        <span style="color: grey;">Completed</span>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="support-box">
+                <div class="support-icon"></div>
+                <strong>Support</strong>
+                <p>Facing any issues or need any help?</p>
+                <p>Reach us at <strong>support@EventUs.com</strong></p>
+                <a href="#">Get in touch with us here</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <form action="/host/seminar" method="POST" enctype="multipart/form-data">
+                
+                <section class="form-section">
+                    <div class="logo-upload-group">
+                        <label for="logo-upload" class="logo-upload-label">
+                            <div class="logo-placeholder"></div>
+                            <span>Change Logo</span>
+                        </label>
+                        <input type="file" id="logo-upload" name="logo" accept="image/jpeg, image/png, image/jpg">
+                        <p class="field-hint">Supported logo image: JPG, JPEG, or PNG. Max 1 MB</p>
+                    </div>
+
+                    <div class="form-group" style="padding-top: 10px;">
+                        <label for="opp-title">Seminar Title *</label>
+                        <input type="text" id="opp-title" placeholder="Enter Opportunity Title" name="seminarTitle">
+                        <p class="field-hint">Max 190 characters</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="org-name">Organisation Name *</label>
+                        <input type="text" id="org-name" value="Maulana Azad National Institute of Technology (MANIT), Bhopal" name="orgName">
+                    </div>
+
+                  
+
+
+                  
+                    <div class="form-group">
+                        <label for="company-url">Company Website URL</label>
+                        <input type="url" id="company-url" placeholder="https://" name="url">
+                    </div>
+                </section>
+
+                <section class="form-section">
+                    <h2>About the Seminar</h2>
+                    <div class="form-group">
+                        <label for="opp-description">Seminar Description *</label>
+                        <div class="rich-text-editor">
+                            <div class="toolbar">
+                                <span>Write the description here.</span>
+                            </div>
+                            <textarea name="opp-description" id="opp-description" rows="8" placeholder="Include Rules, Eligibility, Process, Format, etc."></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="info-box">
+                        <p>This field helps you to mention the details of the opportunity you are listing. It is better to include Rules, Eligibility, Process, Format, etc., in order to get the opportunity approved. The more details, the better!</p>
+                        <p><strong>Guidelines:</strong></p>
+                        <ul>
+                            <li>Mention all the guidelines like eligibility, format, etc.</li>
+                            <li>Inter-college team members allowed or not.</li>
+                            <li>Inter-specialization team members allowed or not.</li>
+                            <li>The number of questions/ problem statements.</li>
+                            <li>Duration of the rounds.</li>
+                        </ul>
+                        <p><strong>Rules:</strong></p>
+                        <ul>
+                            <li>Mention the rules of the competition.</li>
+                        </ul>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="skill" style="margin-bottom: 15px;">
+                            Technologies Involved
+                        </label>
+                                                <div class="skillbox">
+                                                
+                        <span class="skills">Artificial Intelligence</span>
+                        <span class="skills">Machine Learning</span>
+                        <span class="skills">Web Development</span>
+                        <span class="skills">Mobile Development</span>
+                        <span class="skills">Data Science</span>
+                        <span class="skills">Cybersecurity</span>
+                        <span class="skills">Blockchain</span>
+                        <span class="skills">Cloud Computing</span>
+                        <span class="skills">DevOps</span>
+                        <span class="skills">UI/UX Design</span>
+                        <span class="skills">Product Management</span>
+                        <span class="skills">Digital Marketing</span>
+                        <span class="skills">Entrepreneurship</span>
+                        <span class="skills">Startups</span>
+                        <span class="skills">Business Strategy</span>
+                        <span class="skills">Finance</span>
+                        <span class="skills">Sustainability</span>
+                        <span class="skills">Healthcare Tech</span>
+                        <span class="skills">EdTech</span>
+                        <span class="skills">Gaming</span>
+                        <span class="skills">AR/VR</span>
+                        <span class="skills">IoT</span>
+                        <span class="skills">Robotics</span>
+                        <span class="skills">Photography</span>
+                        <span class="skills">Writing</span>
+                        <!-- Skills -->
+                        <span class="skills">JavaScript</span>
+                        <span class="skills">Python</span>
+                        <span class="skills">Java</span>
+                        <span class="skills">React</span>
+                        <span class="skills">Node.js</span>
+                        <span class="skills">SQL</span>
+                        <span class="skills">MongoDB</span>
+                        <span class="skills">AWS</span>
+                        <span class="skills">Docker</span>
+                        <span class="skills">Git</span>
+                        <span class="skills">Figma</span>
+                        <span class="skills">Photoshop</span>
+                        <span class="skills">Excel</span>
+                        <span class="skills">PowerPoint</span>
+                        <span class="skills">Public Speaking</span>
+                        <span class="skills">Leadership</span>
+                        <span class="skills">Project Management</span>
+                        <span class="skills">Research</span>
+                        <span class="skills">Data Analysis</span>
+                        <span class="skills">Content Writing</span>
+                        <span class="skills">Social Media</span>
+                        <span class="skills">SEO</span>
+
+                                                </div>
+                        
+                    </div>
+                </section>
+
+                <section class="form-section" style="padding-bottom: 10px;">
+                    <h2>Opportunity Mode & Participation Type</h2>
+                    <div class="form-group">
+                        <label>Participation Type</label>
+                        <div class="toggle-group">
+                            <input type="radio" id="pt-individual" name="participation-type" value="Individual">
+                            <label for="pt-individual">Individual</label>
+
+                            <input type="radio" id="pt-team" name="participation-type" value="Team" checked>
+                            <label for="pt-team">Team Participation</label>
+                        </div>
+
+                    </div>
+                    
+                    <div class="form-group-inline" id="team-size-section">
+                        <div class="form-group">
+                            <label for="team-min">Set team size</label>
+                            <input name="team-min" type="number" id="team-min" value="1" placeholder="Min: 1">
+                        </div>
+                        <div class="form-group">
+                            <label for="team-max" style="visibility: hidden;">Max</label>
+                            <input name="team-max" type="number" id="team-max" value="2" placeholder="Max: 2">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Mode of Opportunity</label>
+                        <div class="toggle-group">
+
+                            <input type="radio" id="mode-online" name="mode" value="Online">
+                            <label for="mode-online">Online</label>
+
+                            <input type="radio" id="mode-offline" name="mode" value="Offline" checked>
+                            <label for="mode-offline">Offline</label>
+
+                        </div>
+                    </div>
+
+
+                    <div id="offline-section">
+                        <div class="form-group">
+                            <label for="venue">Venue of the Event *</label>
+                            <input name="venue" type="text" id="venue" placeholder="Enter address of the location where opportunity will be held">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="location">Event Location *</label>
+                            <input name="location" type="text" id="location" placeholder="Enter event location">
+                            
+                        </div>
+                    </div>
+                </section>
+
+                <section class="form-section" style="padding-bottom: 10px;">
+                    <h2>Important Timelines</h2>
+                    <div class="form-group">
+                        <label for="opp-description">Registration Deadline</label>
+                        <div class="rich-text-editor">
+                            
+                            <input type="date" name="registrationDate" id="regDate">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="opp-description">Date of Commencement</label>
+                        <div class="rich-text-editor">
+                            
+                            <input type="date" name="commenceDate" id="comDate">
+                        </div>
+                    </div>
+                    
+                 
+
+                    
+                </section>
+
+                <section class="form-section" style="padding-bottom: 10px;">
+                    <h2>Organizer's Contact</h2>
+                    <div class="form-group" style="padding-top: 10px;">
+                        <label for="opp-title">Organiser's Name *</label>
+                        <input type="text" id="organName" placeholder="Enter Opportunity Title" name="organiserName">
+                    </div>
+                    <div class="form-group">
+                        <label for="opp-title">Organiser's Designation *</label>
+                        <input type="text" id="organDes" placeholder="Enter Opportunity Title" name="organiserDesignation">
+                    </div>
+                    <div class="form-group">
+                        <label for="opp-title">Organizer's Email *</label>
+                        <input type="text" id="organEma" placeholder="Enter Opportunity Title" name="organiserEmail">
+                    </div>
+                    <div class="form-group">
+                        <label for="opp-title">Organizer's Contact Number *</label>
+                        <input type="text" id="organNum" placeholder="Enter Opportunity Title" name="organiserNumber">
+                    </div>
+                     
+                 
+
+                    
+                </section>
+
+               
+                
+                <div class="form-actions">
+                   
+                   <button type="submit" class="btn btn-primary">Publish</button>
+
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script></script>
+</body>
+</html>

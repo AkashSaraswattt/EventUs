@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventUs - Your Feed. Your Future.</title>
+    <link rel="stylesheet" href="\stylesheets\landing.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital@1&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo" style="color: white;">
+                <h1 class="box">E</h1>
+                <h2>ventUs</h2>
+            </div>
+            <div class="nav-links">
+                <!-- <a class = "btn-secondary" href="#features">Features</a>
+                <a class = "btn-secondary" href="#about">About</a> -->
+                <button class="btn-secondary" onclick="scrollToSection('features')">Features</button>
+                <button class="btn-secondary" onclick="scrollToSection('stats')">About</button>
+
+                <div class="auth-buttons">
+                    <button class="btn-secondary" onclick="window.location.href='/user/login'" style="border: none;">Login as User</button>
+                    <button class="btn-secondary" onclick="window.location.href='/organisation/login'" style="border: none;">Login as Organization</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>EventUs : Your Feed. Your Future.</h1>
+                <p>Discover personalized events powered by AI. Never miss workshops, hackathons, or networking opportunities that match your interests and career goals.</p>
+                <div class="hero-buttons">
+                    <button class="btn-secondary large " onclick="window.location.href='auth/register.html'">Get Started</button>
+                    <button class="btn-secondary large ">Watch Demo</button>
+                </div>
+            </div>
+            <div class="about-image">
+                    <div class="review-slider">
+                        <div class="review-container">
+                            <div class="review-card active">
+                                <div class="review-header">
+                                    <img src="\images\krish.jpeg" alt="User" class="user-avatar">
+                                    <div class="user-info">
+                                        <h4>Mayank Paliwal</h4>
+                                        <div class="rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="review-summary">Game Changer</p>
+                                <p class="review-text">"As a CS student, finding relevant hackathons was a nightmare — I'd check multiple sites and still miss deadlines. EventUs changed everything. The AI feed is incredibly smart and learned my interests right away. It's an essential tool for building my skills and portfolio."</p>
+                            </div>
+                            
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <img src="\images\palki.jpeg" alt="User" class="user-avatar">
+                                    <div class="user-info">
+                                        <h4>Palki Sharma</h4>
+                                        <div class="rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="review-summary">Perfect Match</p>
+                                <p class="review-text">"I'm in a marketing role, and 'networking' can be a real hit-or-miss. The 'Your Feed. Your Future.' slogan is 100% accurate. The AI delivers a clean, curated list of industry panels, guest speaker events, and focused networking sessions that are actually valuable."</p>
+                            </div>
+                            
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <img src="\images\R11.jpg" alt="User" class="user-avatar">
+                                    <div class="user-info">
+                                        <h4>Krish Sharma</h4>
+                                        <div class="rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="review-summary">Highly Recommended</p>
+                                <p class="review-text">"As a professional, I have very little time to actively hunt for opportunities, but I loves to keep learning. EventUs is the perfect solution. The AI does all the heavy lifting, and I'm genuinely impressed by the quality of its recommendations. I've 'never missed' an important event since I signed up"</p>
+                            </div>
+                        </div>
+                        
+                        <div class="slider-controls">
+                            <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <div class="slider-dots">
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats" id="stats">
+        <p class = "Impact">Our Impact</p>
+        <div class="stats-container">
+            <div class="stat-card">
+                <h3>10K+</h3>
+                <p>Events Discovered</p>
+            </div>
+            <div class="stat-card">
+                <h3>95%</h3>
+                <p>Match Accuracy</p>
+            </div>
+            <div class="stat-card">
+                <h3>5K+</h3>
+                <p>Active Users</p>
+            </div>
+            <div class="stat-card">
+                <h3>500+</h3>
+                <p>Organizers</p>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Powered by Advanced AI</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI Recommendations</h3>
+                    <p>Machine learning algorithms analyze your interests and suggest perfect events tailored just for you.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Smart Calendar</h3>
+                    <p>Seamlessly integrate with Google Calendar and Outlook. Never double-book or miss important events.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Intelligent Alerts</h3>
+                    <p>Receive proactive notifications about events that match your profile and career aspirations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community Network</h3>
+                    <p>Connect with like-minded individuals and build your professional network through shared interests.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Analytics Dashboard</h3>
+                    <p>Organizers get detailed insights on engagement, popularity trends, and audience demographics.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Gamification</h3>
+                    <p>Earn badges and points for attending events, sharing opportunities, and building your profile.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <!-- <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Revolutionizing Event Discovery</h2>
+                    <p>EventUs transforms how students and professionals discover growth opportunities. Our AI-powered platform eliminates information scatter across emails, WhatsApp groups, and notice boards.</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Personalized event recommendations</li>
+                        <li><i class="fas fa-check"></i> Centralized event management</li>
+                        <li><i class="fas fa-check"></i> Real-time engagement analytics</li>
+                        <li><i class="fas fa-check"></i> Seamless RSVP system</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <div class="dashboard-preview">
+                        <div class="preview-header">
+                            <div class="preview-dots">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+                        <div class="preview-content">
+                            <div class="preview-sidebar"></div>
+                            <div class="preview-main">
+                                <div class="preview-cards">
+                                    <div class="preview-card"></div>
+                                    <div class="preview-card"></div>
+                                    <div class="preview-card"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="nav-logo" style="color: white;">
+                <h1 class="box">E</h1>
+                <h2>ventUs</h2>
+            </div>
+                    <p>Your Feed. Your Future.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="#">For Students</a></li>
+                        <li><a href="#">For Organizers</a></li>
+                        <li><a href="#">API Access</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Documentation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EventUs. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+
+window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 100) {
+        navbar.style.background = 'rgba(47, 72, 107, 0.95)';
+        navbar.style.backdropFilter = 'blur(10px)';
+    } else {
+        navbar.style.background = '#2f486b';
+        navbar.style.backdropFilter = 'none';
+    }
+});
+
+
+const observerOptions = {
+    threshold: 0.5,
+    rootMargin: '0px 0px -100px 0px'
+};
+
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const statCards = entry.target.querySelectorAll('.stat-card');
+            statCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        }
+    });
+}, observerOptions);
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const statsSection = document.querySelector('.stats');
+    const statCards = document.querySelectorAll('.stat-card');
+    
+    
+    statCards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'all 0.6s ease';
+    });
+    
+    if (statsSection) {
+        statsObserver.observe(statsSection);
+    }
+});
+
+
+document.querySelectorAll('.feature-card').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.boxShadow = '0 8px 30px rgba(47, 72, 107, 0.2)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+        this.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+    });
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const demoButton = document.querySelector('.btn-secondary.large');
+    if (demoButton && demoButton.textContent.includes('Demo')) {
+        demoButton.addEventListener('click', function() {
+           
+            alert('Demo coming soon! Sign up to be notified when it\'s ready.');
+        });
+    }
+});
+
+
+function toggleMobileMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('mobile-active');
+}
+
+
+document.querySelectorAll('.btn-primary, .btn-secondary').forEach(button => {
+    button.addEventListener('click', function(e) {
+        if (this.getAttribute('onclick')) return;
+        
+        const originalText = this.textContent;
+        this.textContent = 'Loading...';
+        this.disabled = true;
+        
+        setTimeout(() => {
+            this.textContent = originalText;
+            this.disabled = false;
+        }, 1500);
+    });
+});
+
+
+window.addEventListener('scroll', function() {
+    const scrolled = window.pageYOffset;
+    const parallax = document.querySelector('.ai-visualization');
+    if (parallax) {
+        const speed = scrolled * 0.5;
+        parallax.style.transform = `translateY(${speed}px)`;
+    }
+});
+
+const animateOnScroll = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+        }
+    });
+}, { threshold: 0.1 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.feature-card, .about-text, .dashboard-preview').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'all 0.8s ease';
+        animateOnScroll.observe(el);
+    });
+});
+
+const style = document.createElement('style');
+style.textContent = `
+    .animate-in {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+    
+    @media (max-width: 768px) {
+        .nav-links.mobile-active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #2f486b;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+    }
+`;
+document.head.appendChild(style);
+
+class ReviewSlider {
+    constructor() {
+        this.currentSlide = 0;
+        this.slides = document.querySelectorAll('.review-card');
+        this.dots = document.querySelectorAll('.dot');
+        this.prevBtn = document.querySelector('.prev-btn');
+        this.nextBtn = document.querySelector('.next-btn');
+        
+        this.init();
+    }
+    
+    init() {
+        if (!this.slides.length) return;
+        
+        this.prevBtn?.addEventListener('click', () => this.prevSlide());
+        this.nextBtn?.addEventListener('click', () => this.nextSlide());
+        
+        this.dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => this.goToSlide(index));
+        });
+        
+        setInterval(() => this.nextSlide(), 4000);
+    }
+    
+    showSlide(index) {
+        this.slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+        });
+        this.dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+    }
+    
+    nextSlide() {
+        this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+        this.showSlide(this.currentSlide);
+    }
+    
+    prevSlide() {
+        this.currentSlide = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+        this.showSlide(this.currentSlide);
+    }
+    
+    goToSlide(index) {
+        this.currentSlide = index;
+        this.showSlide(this.currentSlide);
+    }
+}
+document.addEventListener('DOMContentLoaded', function() {
+    new ReviewSlider();
+});
+
+function scrollToSection(id) {
+    const target = document.getElementById(id);
+    if (!target) return;
+
+    const y = target.getBoundingClientRect().top + window.pageYOffset - 90;
+
+    window.scrollTo({
+        top: y,
+        behavior: "smooth"
+    });
+}
+
+
+    </script>
+</body>
+</html>

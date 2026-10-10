@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Events</title>
+    <link rel="stylesheet" href="\stylesheets\setpreferences.css">
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+    <input 
+  type="hidden" 
+  id="savedPreferences" 
+  value='<%- JSON.stringify(interests || []) %>'>
+
+
+
+    <div class="layout">
+
+        <aside class="sidebar">
+            <div class="logo">EventUs</div>
+
+            <ul>
+                <li onclick="window.location.href='/foryou'">For You</li>
+                <li onclick="window.location.href='/explore'">Explore Organizations</li>
+                <!-- <li>Subscriptions</li> -->
+                <!-- <li>Explore Categories</li> -->
+                <!-- <li>Groups</li> -->
+                <li onclick="window.location.href='/bookmarks'">Bookmarks</li>
+                <li class="active" >Set preferences</li>
+            </ul>
+
+            <ul>
+                
+                <li onclick="window.location.href='/user/logout'">Logout</li>
+            </ul>
+        </aside>
+
+        
+        <main class="main">
+            <header class="topbar" style="opacity: 0;">
+                <div></div>
+                <div class="right">
+                    <span class="bell">🔔</span>
+                    <div class="profile">D</div>
+                </div>
+            </header>
+
+            <section class="page-title">
+                <h2>Choose your preferences based on your interests.</h2>
+                <p style="margin-top: 20px;">Categories</p>
+                    <div class="skillbox" style="margin-top: 15px;">
+                  
+    <span class="skills">Artificial Intelligence</span>
+    <span class="skills">Machine Learning</span>
+    <span class="skills">Web Development</span>
+    <span class="skills">Mobile Development</span>
+    <span class="skills">Data Science</span>
+    <span class="skills">Cybersecurity</span>
+    <span class="skills">Blockchain</span>
+    <span class="skills">Cloud Computing</span>
+    <span class="skills">DevOps</span>
+    <span class="skills">UI/UX Design</span>
+    <span class="skills">Product Management</span>
+    <span class="skills">Digital Marketing</span>
+    <span class="skills">Entrepreneurship</span>
+    <span class="skills">Startups</span>
+    <span class="skills">Business Strategy</span>
+    <span class="skills">Finance</span>
+    <span class="skills">Sustainability</span>
+    <span class="skills">Healthcare Tech</span>
+    <span class="skills">EdTech</span>
+    <span class="skills">Gaming</span>
+    <span class="skills">AR/VR</span>
+    <span class="skills">IoT</span>
+    <span class="skills">Robotics</span>
+    <span class="skills">Photography</span>
+    <span class="skills">Writing</span>
+    <!-- Skills -->
+    <span class="skills">JavaScript</span>
+    <span class="skills">Python</span>
+    <span class="skills">Java</span>
+    <span class="skills">React</span>
+    <span class="skills">Node.js</span>
+    <span class="skills">SQL</span>
+    <span class="skills">MongoDB</span>
+    <span class="skills">AWS</span>
+    <span class="skills">Docker</span>
+    <span class="skills">Git</span>
+    <span class="skills">Figma</span>
+    <span class="skills">Photoshop</span>
+    <span class="skills">Excel</span>
+    <span class="skills">PowerPoint</span>
+    <span class="skills">Public Speaking</span>
+    <span class="skills">Leadership</span>
+    <span class="skills">Project Management</span>
+    <span class="skills">Research</span>
+    <span class="skills">Data Analysis</span>
+    <span class="skills">Content Writing</span>
+    <span class="skills">Social Media</span>
+    <span class="skills">SEO</span>
+
+                            </div>
+
+            <button onclick="savePreferences()">Update</button>
+            </section>           
+        </main>
+
+    </div>
+    <script>
+   
+    
+    let savedPreferences = [];
+try {
+    const raw = document.getElementById("savedPreferences").value;
+    savedPreferences = raw ? JSON.parse(raw) : [];
+} catch {
+    savedPreferences = [];
+}
+
+    console.log("Loaded from MongoDB:", savedPreferences);
+
+    
+    let skillsArr = [...savedPreferences];
+
+    
+    const skillElements = document.querySelectorAll(".skills");
+
+    skillElements.forEach(skill => {
+        const value = skill.textContent.trim();
+
+ 
+        if (savedPreferences.includes(value)) {
+            skill.classList.add("selected");
+        }
+
+        
+        skill.addEventListener("click", () => {
+            skill.classList.toggle("selected");
+
+            if (skill.classList.contains("selected")) {
+                if (!skillsArr.includes(value)) {
+                    skillsArr.push(value);
+                }
+            } else {
+                skillsArr = skillsArr.filter(s => s !== value);
+            }
+
+            console.log("Updated skills:", skillsArr);
+        });
+    });
+
+   
+    function savePreferences() {
+        fetch("/user/set-preferences", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ interests: skillsArr })
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log("Saved:", data);
+            window.location.href = "/foryou";
+        })
+        .catch(err => console.error(err));
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Events</title>
+    <link rel="stylesheet" href="\stylesheets\foryou.css">
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+
+    <div class="layout">
+
+        <aside class="sidebar" style="">
+            <div class="logo">EventUs</div>
+
+            <ul>
+                <li class="active">For You</li>
+                <li onclick="window.location.href='/explore'">Explore Organizations</li>
+                <!-- <li>Subscriptions</li> -->
+                <!-- <li>Explore Categories</li> -->
+                <!-- <li>Groups</li> -->
+                <li onclick="window.location.href='/bookmarks'">Bookmarks</li>
+                <li onclick="window.location.href='/set_preferences'">Set preferences</li>
+            </ul>
+
+            <ul>
+                
+                <li onclick="window.location.href='/user/logout'">Logout</li>
+            </ul>
+        </aside>
+
+        <main class="main">
+            <header class="topbar" style="opacity: 0;">
+                <div></div>
+                <div class="right">
+                    <span class="bell">🔔</span>
+                    <div class="profile">D</div>
+                </div>
+            </header>
+
+            <section class="page-title">
+                <h2>All Events</h2>
+                <p>Find workshops, hackathons, and networking opportunities</p>
+            </section >
+
+            <!-- <div class="filters">
+                <select id="categoryFilter" disabled>
+                    <option>All Categories</option>
+                    <option>Workshop</option>
+                    <option>Hackathon</option>
+                    <option>Seminar</option>
+                </select>
+
+                <select id="modeFilter" disabled>
+                    <option>All Modes</option>
+                    <option>online</option>
+                    <option>offline</option>
+                    <option>hybrid</option>
+                </select>
+
+                <button class="clear-btn" onclick="clearFilters()">Clear Filters</button>
+            </div> -->
+
+         
+            <div class="cards" style="margin-top: 15px;">  
+                <!-- <% if (workshops.length === 0) { %>
+   <p>No recommended workshops based on your interests.</p>
+<% } %>  -->
+<% workshops.forEach(item => { %>
+
+<a href="/workshop/<%= item.workshop._id %>" class="card-link">
+<div class="event-card">
+    <div class="event-banner">
+        <img src="<%= item.workshop.logo %>" class="event-logo" alt="Event Logo">
+
+        <div class="event-tags">
+            <span class="tag"><%= item.workshop.mode %></span>
+            <span class="tag"><%= item.workshop.participationType %></span>
+        </div>
+    </div>
+
+    <div class="event-content">
+        <h3 class="event-title"><%= item.workshop.workshopTitle %></h3>
+        <p class="event-org"><%= item.workshop.description %></p>
+
+        <div class="event-stats">
+            <div class="stat">
+
+                <% if (item.workshop.participationType === "Team") { %>
+                    <i class="fa fa-users"></i> 
+                    <%= item.workshop.minSize %> - <%= item.workshop.maxSize %> Members
+                <% } else { %>
+                    <i class="fa fa-user"></i> 1 Member
+                <% } %>
+
+            </div>
+
+            <div class="stat">
+                <i class="fa-solid fa-clock"></i> 
+                <%= Math.ceil((new Date(item.workshop.registrationDate) - new Date()) / (1000*60*60*24)) %> days left
+            </div>
+        </div>
+
+        <div class="event-stats" style="padding-top: 10px;">
+            <div class="stat">
+                <i class="fa-solid fa-graduation-cap"></i> 
+                <%= item.workshop.participationType %>
+            </div>
+        </div>
+
+        <div class="event-stats" style="padding-top: 10px;">
+            <div class="stat">
+                <i class="fa-solid fa-marker"></i> 
+                Match Score: <%= (item.score * 100).toFixed(1) %>%
+            </div>
+        </div>
+
+        <span class="event-arrow">↗</span>
+    </div>
+</div>
+</a>
+
+<% }) %>
+
+
+
+
+       
+
+        </main>
+
+    </div>
+
+    <script>
+const events = [
+    {
+        category: "Hackathon",
+        mode: "offline",
+        title: "ISTE Hackathon",
+        desc: "36 Hour Hackathon",
+        date: "11/1/2025",
+        location: "BHOPAL",
+        host: "kaka",
+        tags: ["AI", "Machine Learning", "Career Development"]
+    },
+    {
+        category: "Workshop",
+        mode: "offline",
+        title: "24 hour workshop",
+        desc: "aim to build focus",
+        date: "11/1/2025",
+        location: "Bhopal",
+        host: "kaka",
+        tags: ["AI", "Cybersecurity", "UI/UX Design"]
+    },
+    {
+        category: "Workshop",
+        mode: "hybrid",
+        title: "AI & Machine Learning Summit 2025",
+        desc: "Join industry leaders...",
+        date: "11/6/2025",
+        location: "San Francisco",
+        host: "Bob Smith",
+        tags: ["Artificial Intelligence", "Machine Learning", "Deep Learning"]
+    },
+    {
+        category: "Workshop",
+        mode: "hybrid",
+        title: "AI & Machine Learning Summit 2025",
+        desc: "Join industry leaders...",
+        date: "11/6/2025",
+        location: "San Francisco",
+        host: "Bob Smith",
+        tags: ["Artificial Intelligence", "Machine Learning", "Deep Learning"]
+    }
+];
+
+function renderEvents(list) {
+    const container = document.getElementById("eventsContainer");
+    container.innerHTML = "";
+
+    list.forEach(e => {
+        container.innerHTML += `
+            <div class="event-card">
+                <span class="badge">${e.category}</span>
+                <span class="mode">${e.mode}</span>
+
+                <h3>${e.title}</h3>
+                <p>${e.desc}</p>
+
+                <div class="icons">
+                    📅 ${e.date}<br>
+                    📍 ${e.location}<br>
+                    🙍 ${e.host}
+                </div>
+
+                <div class="tags">
+                    ${e.tags.map(t => `<span class="tag">#${t}</span>`).join("")}
+                </div>
+
+                <button class="rsvp">RSVP Now</button>
+            </div>
+        `;
+    });
+}
+
+function clearFilters() {
+    document.getElementById("categoryFilter").selectedIndex = 0;
+    document.getElementById("modeFilter").selectedIndex = 0;
+    renderEvents(events);
+}
+
+document.getElementById("categoryFilter").onchange =
+document.getElementById("modeFilter").onchange = function () {
+    const cat = categoryFilter.value;
+    const mode = modeFilter.value;
+
+    const filtered = events.filter(e => 
+        (cat === "All Categories" || e.category === cat) &&
+        (mode === "All Modes" || e.mode === mode)
+    );
+
+    renderEvents(filtered);
+};
+
+renderEvents(events);
+
+
+function loadCards() {
+    const container = document.getElementById("cardContainer");
+
+    events.forEach(ev => {
+        const card = document.createElement("div");
+        card.classList.add("event-card");
+
+        card.innerHTML = `
+            <div class="card-banner"></div>
+
+            <img class="card-logo" src="${ev.logo}" alt="Logo">
+
+            <div class="card-body">
+
+                <div class="card-tags">
+                    ${ev.tags.map(t => `<span class="tag">${t}</span>`).join("")}
+                </div>
+
+                <h3 class="card-title">${ev.title}</h3>
+
+                <p class="card-subtitle">${ev.institute}</p>
+
+                <div class="card-footer">
+                    <p><i class="fa-solid fa-users"></i> ${ev.applied} Applied</p>
+                    <p><i class="fa-regular fa-clock"></i> ${ev.daysLeft} days left</p>
+                </div>
+
+            </div>
+        `;
+
+        container.appendChild(card);
+    });
+}
+
+loadCards();
+
+    </script>
+</body>
+</html>
